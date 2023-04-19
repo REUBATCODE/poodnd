@@ -31,18 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CRUD));
             label_armeria = new Label();
             pictureBox_npc_tienda = new PictureBox();
-            dataGridView1 = new DataGridView();
+            dgridEquipamiento = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
+            colNombre = new DataGridViewTextBoxColumn();
+            colPrecio = new DataGridViewTextBoxColumn();
+            colCodBarras = new DataGridViewTextBoxColumn();
+            colTipo = new DataGridViewTextBoxColumn();
+            colImagen = new DataGridViewImageColumn();
             txt_id = new TextBox();
             txtnombre = new TextBox();
             txtprecio = new TextBox();
             txtcodbarras = new TextBox();
             txtimagen = new TextBox();
-            comboBox_tipo = new ComboBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            comboTipo = new ComboBox();
+            btnGuardar = new Button();
+            btnBorrar = new Button();
+            btnModificar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox_npc_tienda).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgridEquipamiento).BeginInit();
             SuspendLayout();
             // 
             // label_armeria
@@ -63,20 +69,55 @@
             // 
             pictureBox_npc_tienda.BackColor = Color.Transparent;
             pictureBox_npc_tienda.BackgroundImage = (Image)resources.GetObject("pictureBox_npc_tienda.BackgroundImage");
-            pictureBox_npc_tienda.Location = new Point(80, 107);
+            pictureBox_npc_tienda.Location = new Point(-27, 105);
             pictureBox_npc_tienda.Name = "pictureBox_npc_tienda";
-            pictureBox_npc_tienda.Size = new Size(389, 553);
+            pictureBox_npc_tienda.Size = new Size(360, 553);
             pictureBox_npc_tienda.TabIndex = 1;
             pictureBox_npc_tienda.TabStop = false;
             // 
-            // dataGridView1
+            // dgridEquipamiento
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(475, 9);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(505, 616);
-            dataGridView1.TabIndex = 2;
+            dgridEquipamiento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgridEquipamiento.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colPrecio, colCodBarras, colTipo, colImagen });
+            dgridEquipamiento.Location = new Point(339, 9);
+            dgridEquipamiento.Name = "dgridEquipamiento";
+            dgridEquipamiento.RowTemplate.Height = 25;
+            dgridEquipamiento.Size = new Size(641, 616);
+            dgridEquipamiento.TabIndex = 2;
+            dgridEquipamiento.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // colId
+            // 
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            // 
+            // colNombre
+            // 
+            colNombre.HeaderText = "NOMBRE";
+            colNombre.Name = "colNombre";
+            // 
+            // colPrecio
+            // 
+            colPrecio.HeaderText = "PRECIO";
+            colPrecio.Name = "colPrecio";
+            // 
+            // colCodBarras
+            // 
+            colCodBarras.HeaderText = "CÓDIGO DE BARRAS";
+            colCodBarras.Name = "colCodBarras";
+            // 
+            // colTipo
+            // 
+            colTipo.HeaderText = "TIPO";
+            colTipo.Name = "colTipo";
+            // 
+            // colImagen
+            // 
+            colImagen.HeaderText = "IMAGEN";
+            colImagen.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            colImagen.Name = "colImagen";
+            colImagen.Resizable = DataGridViewTriState.True;
+            colImagen.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // txt_id
             // 
@@ -138,74 +179,79 @@
             txtimagen.Text = "IMAGEN";
             txtimagen.TextAlign = HorizontalAlignment.Center;
             // 
-            // comboBox_tipo
+            // comboTipo
             // 
-            comboBox_tipo.BackColor = Color.MediumPurple;
-            comboBox_tipo.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
-            comboBox_tipo.ForeColor = SystemColors.InactiveBorder;
-            comboBox_tipo.FormattingEnabled = true;
-            comboBox_tipo.Location = new Point(986, 365);
-            comboBox_tipo.Name = "comboBox_tipo";
-            comboBox_tipo.Size = new Size(389, 27);
-            comboBox_tipo.TabIndex = 8;
-            comboBox_tipo.Text = "TIPO DE PRODUCTO";
+            comboTipo.BackColor = Color.MediumPurple;
+            comboTipo.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+            comboTipo.ForeColor = SystemColors.InactiveBorder;
+            comboTipo.FormattingEnabled = true;
+            comboTipo.Items.AddRange(new object[] { "ESPADA", "HACHA", "LANZA", "ESCUDO", "ARMADURA" });
+            comboTipo.Location = new Point(986, 365);
+            comboTipo.Name = "comboTipo";
+            comboTipo.Size = new Size(389, 27);
+            comboTipo.TabIndex = 8;
+            comboTipo.Text = "TIPO DE PRODUCTO";
+            comboTipo.SelectedIndexChanged += comboTipo_SelectedIndexChanged;
             // 
-            // button1
+            // btnGuardar
             // 
-            button1.BackColor = Color.FromArgb(192, 255, 192);
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.Font = new Font("Anton", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.FromArgb(255, 255, 128);
-            button1.Location = new Point(1035, 398);
-            button1.Name = "button1";
-            button1.Size = new Size(140, 140);
-            button1.TabIndex = 12;
-            button1.UseVisualStyleBackColor = false;
+            btnGuardar.BackColor = Color.FromArgb(192, 255, 192);
+            btnGuardar.BackgroundImage = (Image)resources.GetObject("btnGuardar.BackgroundImage");
+            btnGuardar.Font = new Font("Anton", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGuardar.ForeColor = Color.FromArgb(255, 255, 128);
+            btnGuardar.Location = new Point(1035, 398);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(140, 140);
+            btnGuardar.TabIndex = 12;
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += button1_Click;
             // 
-            // button2
+            // btnBorrar
             // 
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.Location = new Point(1193, 565);
-            button2.Name = "button2";
-            button2.Size = new Size(140, 60);
-            button2.TabIndex = 13;
-            button2.UseVisualStyleBackColor = true;
+            btnBorrar.BackgroundImage = (Image)resources.GetObject("btnBorrar.BackgroundImage");
+            btnBorrar.Location = new Point(1193, 565);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(140, 60);
+            btnBorrar.TabIndex = 13;
+            btnBorrar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnModificar
             // 
-            button3.BackColor = Color.FromArgb(192, 255, 192);
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.Font = new Font("Anton", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.ForeColor = Color.FromArgb(255, 255, 128);
-            button3.Location = new Point(1193, 398);
-            button3.Name = "button3";
-            button3.Size = new Size(140, 140);
-            button3.TabIndex = 14;
-            button3.UseVisualStyleBackColor = false;
+            btnModificar.BackColor = Color.FromArgb(192, 255, 192);
+            btnModificar.BackgroundImage = (Image)resources.GetObject("btnModificar.BackgroundImage");
+            btnModificar.Font = new Font("Anton", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnModificar.ForeColor = Color.FromArgb(255, 255, 128);
+            btnModificar.Location = new Point(1193, 398);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(140, 140);
+            btnModificar.TabIndex = 14;
+            btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click;
             // 
-            // Caja
+            // CRUD
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(146, 149, 138);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1387, 637);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(comboBox_tipo);
+            Controls.Add(btnModificar);
+            Controls.Add(btnBorrar);
+            Controls.Add(btnGuardar);
+            Controls.Add(comboTipo);
             Controls.Add(txtimagen);
             Controls.Add(txtcodbarras);
             Controls.Add(txtprecio);
             Controls.Add(txtnombre);
             Controls.Add(txt_id);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgridEquipamiento);
             Controls.Add(pictureBox_npc_tienda);
             Controls.Add(label_armeria);
-            Name = "Caja";
+            Name = "CRUD";
             Text = "Caja";
+            Load += CRUD_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox_npc_tienda).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgridEquipamiento).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,15 +260,21 @@
 
         private Label label_armeria;
         private PictureBox pictureBox_npc_tienda;
-        private DataGridView dataGridView1;
+        private DataGridView dgridEquipamiento;
         private TextBox txt_id;
         private TextBox txtnombre;
         private TextBox txtprecio;
         private TextBox txtcodbarras;
         private TextBox txtimagen;
-        private ComboBox comboBox_tipo;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private ComboBox comboTipo;
+        private Button btnGuardar;
+        private Button btnBorrar;
+        private Button btnModificar;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colNombre;
+        private DataGridViewTextBoxColumn colPrecio;
+        private DataGridViewTextBoxColumn colCodBarras;
+        private DataGridViewTextBoxColumn colTipo;
+        private DataGridViewImageColumn colImagen;
     }
 }

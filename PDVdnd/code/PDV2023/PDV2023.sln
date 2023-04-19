@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Back_CRUDs_BD", "Back_CRUDs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Middle_Armeria_PDV", "Middle_Armeria_PDV\Middle_Armeria_PDV.csproj", "{9D3B1732-D4A7-4701-A4CD-D6392A3A2895}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm_Armeria_PDV", "WinForm_Armeria_PDV\WinForm_Armeria_PDV.csproj", "{8E72B350-1E09-443E-9597-03D909C0437E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinForm_Armeria_PDV", "WinForm_Armeria_PDV\WinForm_Armeria_PDV.csproj", "{8E72B350-1E09-443E-9597-03D909C0437E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

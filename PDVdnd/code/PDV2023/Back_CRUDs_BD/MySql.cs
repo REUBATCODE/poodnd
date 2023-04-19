@@ -31,37 +31,34 @@ namespace Back_CRUDs_BD
             {
                 //abrir una conexión
                 if (con.State == System.Data.ConnectionState.Closed)
+                {
                     con.Open();
-                //se concatenan todos los campos
-                string camposConcat = "";
-                foreach (var campo in campos)
-                {
-                    camposConcat += campo + ",";
-                }
-                //Quitar la coma****
-                camposConcat = camposConcat.Remove(camposConcat.Length - 1);
-                string valsConcat = "";
-                //Concatenamos los valores
-                foreach (ValoresAInsertar valor in valores)
-                {
-                    if(valor.llevaApostrofes)
+                    //se concatenan todos los campos
+                    string camposConcat = "";
+                    foreach (var campo in campos)
                     {
-                        valsConcat += "'" + valor.valor + "',";
+                        camposConcat += campo + ",";
                     }
-                    else
+                    //Quitar la coma****
+                    camposConcat = camposConcat.Remove(camposConcat.Length - 1);
+                    string valsConcat = "";
+                    //Concatenamos los valores
+                    for (int i = 0; i < valores.Count; i++)
                     {
-                        valsConcat += valor.valor + ",";
+                        //concatenar un nombreDeCampo = valor (con sus '')
+                        valsConcat += (valores[i].llevaApostrofes ? "'" + valores[i].valor + "'," : valores[i].valor + ",");
                     }
-                }
-                //definir el query en el MysqlCommand
-                comando = new MySqlCommand($"INSERT INTO {tabla} ({camposConcat}) VALUES({valsConcat})");
-                //relacionar el command con la conexión
-                comando.Connection = con;
-                //ejecutar el query****
-                int res = comando.ExecuteNonQuery();
-                //validar que se ejecutó correctamente
-                if (res == 1)
-                    resultado = true;
+                    valsConcat = valsConcat.Remove(valsConcat.Length - 1);
+                    //definir el query en el MysqlCommand
+                    comando = new MySqlCommand($"INSERT INTO {tabla} ({camposConcat}) VALUES({valsConcat});");
+                    //relacionar el command con la conexión
+                    comando.Connection = con;
+                    //ejecutar el query****
+                    int res = comando.ExecuteNonQuery();
+                    //validar que se ejecutó correctamente
+                    if (res == 1)
+                        resultado = true;
+                }    
                 else
                 {
                     resultado = false;
@@ -131,6 +128,7 @@ namespace Back_CRUDs_BD
                 if(con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
+            return resultado;
         }
 
         public override bool borrar(string tabla, int id)
@@ -162,10 +160,10 @@ namespace Back_CRUDs_BD
                 if(con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
-         
+            return resultado;
         }
 
-        public override object consulta(string tabla)
+        public override List<object[]> consulta(string tabla)
         {
             List<object[]> resultado = new List<object[]>();
             //hacer el bloque trycatch.

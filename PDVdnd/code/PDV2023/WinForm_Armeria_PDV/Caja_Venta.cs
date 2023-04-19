@@ -58,7 +58,7 @@ namespace WinForm_Armeria_PDV
                     prodsAVender.Add(prodVender);
             }
 
-            int cambio = venta.registrarVenta(1, int.Parse(txtTotal.Text), int.Parse(txtEfectivo.Text), prodsAVender);
+            int cambio = int.Parse(((venta.registrarVenta(1, int.Parse(txtTotal.Text), int.Parse(txtEfectivo.Text), prodsAVender))).ToString());
             //si hay error
             if(cambio == -1)
             {
@@ -66,7 +66,7 @@ namespace WinForm_Armeria_PDV
             }
             else
             {
-                MessageBox("Registrada correctamente", "Su cambio es $" + cambio + "Vuelva pronto.");
+                MessageBox.Show("Registrada correctamente", "Su cambio es $" + cambio + "Vuelva pronto.");
             }
         }
     }

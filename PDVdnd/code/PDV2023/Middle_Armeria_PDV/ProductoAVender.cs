@@ -12,7 +12,7 @@ namespace Middle_Armeria_PDV
         public int cantidad;
         //public llevaapostrofes
 
-        public ProductoAVender(int productoId, int cantidad)
+        public ProductoAVender(int prodId, int cant)
         {
             this.productoId = prodId;
             this.cantidad = cant;

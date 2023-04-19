@@ -26,7 +26,7 @@ namespace Middle_Armeria_PDV
 
         public double registrarVenta(int cajeroId, int monto, int pago, List<ProductoAVender> prodsAVender)
         {
-            double res = 0;
+            int res = 0;
             this.fechaHora = new DateTime();
             //registramos la venta de la tabla 'ventas'
             try
