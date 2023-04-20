@@ -160,7 +160,7 @@
             lblSubtotal.BackColor = Color.Transparent;
             lblSubtotal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSubtotal.ForeColor = SystemColors.ButtonHighlight;
-            lblSubtotal.Location = new Point(382, 361);
+            lblSubtotal.Location = new Point(358, 359);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(93, 20);
             lblSubtotal.TabIndex = 8;
@@ -184,7 +184,7 @@
             lblTotal.BackColor = Color.Transparent;
             lblTotal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblTotal.ForeColor = SystemColors.ButtonHighlight;
-            lblTotal.Location = new Point(405, 414);
+            lblTotal.Location = new Point(392, 416);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(59, 20);
             lblTotal.TabIndex = 10;
@@ -214,7 +214,7 @@
             // 
             btnPagar.BackColor = SystemColors.Control;
             btnPagar.BackgroundImage = (Image)resources.GetObject("btnPagar.BackgroundImage");
-            btnPagar.Location = new Point(200, 359);
+            btnPagar.Location = new Point(232, 359);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(55, 55);
             btnPagar.TabIndex = 13;
@@ -225,11 +225,12 @@
             // 
             btnCancelar.BackColor = SystemColors.Control;
             btnCancelar.BackgroundImage = (Image)resources.GetObject("btnCancelar.BackgroundImage");
-            btnCancelar.Location = new Point(200, 481);
+            btnCancelar.Location = new Point(232, 483);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(55, 55);
             btnCancelar.TabIndex = 14;
             btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // Caja_Venta
             // 

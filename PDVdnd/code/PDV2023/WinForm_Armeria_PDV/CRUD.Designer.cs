@@ -47,6 +47,7 @@
             btnGuardar = new Button();
             btnBorrar = new Button();
             btnModificar = new Button();
+            btnImagen = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox_npc_tienda).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgridEquipamiento).BeginInit();
             SuspendLayout();
@@ -199,7 +200,7 @@
             btnGuardar.BackgroundImage = (Image)resources.GetObject("btnGuardar.BackgroundImage");
             btnGuardar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGuardar.ForeColor = Color.FromArgb(255, 255, 128);
-            btnGuardar.Location = new Point(1035, 398);
+            btnGuardar.Location = new Point(986, 394);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(140, 140);
             btnGuardar.TabIndex = 12;
@@ -222,12 +223,22 @@
             btnModificar.BackgroundImage = (Image)resources.GetObject("btnModificar.BackgroundImage");
             btnModificar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnModificar.ForeColor = Color.FromArgb(255, 255, 128);
-            btnModificar.Location = new Point(1193, 398);
+            btnModificar.Location = new Point(1132, 394);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(140, 140);
             btnModificar.TabIndex = 14;
             btnModificar.UseVisualStyleBackColor = false;
             btnModificar.Click += btnModificar_Click;
+            // 
+            // btnImagen
+            // 
+            btnImagen.BackgroundImage = (Image)resources.GetObject("btnImagen.BackgroundImage");
+            btnImagen.Location = new Point(1278, 394);
+            btnImagen.Name = "btnImagen";
+            btnImagen.Size = new Size(75, 140);
+            btnImagen.TabIndex = 15;
+            btnImagen.UseVisualStyleBackColor = true;
+            btnImagen.Click += btnImagen_Click;
             // 
             // CRUD
             // 
@@ -236,6 +247,7 @@
             BackColor = Color.FromArgb(146, 149, 138);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1370, 637);
+            Controls.Add(btnImagen);
             Controls.Add(btnModificar);
             Controls.Add(btnBorrar);
             Controls.Add(btnGuardar);
@@ -277,5 +289,6 @@
         private DataGridViewTextBoxColumn colCodBarras;
         private DataGridViewTextBoxColumn colTipo;
         private DataGridViewImageColumn colImagen;
+        private Button btnImagen;
     }
 }

@@ -77,6 +77,7 @@ namespace WinForm_Armeria_PDV
             else
             {
                 MessageBox.Show("Producto registrado con éxito. ");
+
                 this.limpiarForm(true);
                 this.CRUD_Load(sender, e);//Con esto, cada producto borrado nos recargará el datagrid
             }
@@ -178,6 +179,24 @@ namespace WinForm_Armeria_PDV
                 this.CRUD_Load(sender, e);//Con esto, cada producto borrado nos recargará el datagrid
             }
 
+        }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            DialogResult res = openFileDialog1.ShowDialog();
+            //Cargar el archivo. 
+            if (res == DialogResult.OK)
+            {
+                pictureBoxImagen.Image = new Bitmap(openFileDialog1.FileName);
+                //crear el nombre único. 
+                DateTime dtNombre = DateTime.Now;
+                string nombreImg = "prod_" + dtNombre.Ticks + ".png";
+                txtImagen.Text = nombreImg;
+            }
+            else
+            {
+                //Mencionar el error en caso de existir. 
+            }
         }
     }
 }
