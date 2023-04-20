@@ -34,13 +34,12 @@ namespace WinForm_Armeria_PDV
             if (e.RowIndex >= 0)
             {
 
-                int celdas = e.RowIndex;//Al index donde le dimos click, (se llama e)
-                //En cada campo, de la tabla, en la variable creada, en la celda de la posición del campo
+                int celdas = e.RowIndex;
                 txtnombre.Text = dgridEquipamiento.Rows[celdas].Cells[1].Value.ToString();
                 txtprecio.Text = dgridEquipamiento.Rows[celdas].Cells[2].Value.ToString();
                 txtcodbarras.Text = dgridEquipamiento.Rows[celdas].Cells[3].Value.ToString();
-                comboTipo.SelectedItem = dgridEquipamiento.Rows[celdas].Cells[4].Value.ToString();
-                txtimagen.Text = dgridEquipamiento.Rows[celdas].Cells[5].Value.ToString();
+                comboTipo.SelectedItem = dgridEquipamiento.Rows[celdas].Cells[5].Value.ToString();
+                txtimagen.Text = dgridEquipamiento.Rows[celdas].Cells[4].Value.ToString();
                 //pictureBoxImagen.ImageLocation = "..\\..\\..\\fotosProductos\\" + txtImagen.Text;//para recargar la foto. 
                 this.identificador = (int)dgridEquipamiento.Rows[celdas].Cells[0].Value;
             }
@@ -78,6 +77,8 @@ namespace WinForm_Armeria_PDV
             else
             {
                 MessageBox.Show("Producto registrado con éxito. ");
+                this.limpiarForm(true);
+                this.CRUD_Load(sender, e);//Con esto, cada producto borrado nos recargará el datagrid
             }
         }
 
@@ -134,7 +135,6 @@ namespace WinForm_Armeria_PDV
             for (int i = 0; i < datos.Count; i++)
             {
                 dgridEquipamiento.Rows.Add(datos[i]);
-
             }
         }
         public void limpiarForm(bool habilitar)
@@ -168,6 +168,16 @@ namespace WinForm_Armeria_PDV
             }
         }
 
-        
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            bool resultado = prod.borrar(identificador);
+            if (resultado == false)
+            {
+                MessageBox.Show("PRODUCTO ELIMINADO CON ÉXITO");
+                this.limpiarForm(true);
+                this.CRUD_Load(sender, e);//Con esto, cada producto borrado nos recargará el datagrid
+            }
+
+        }
     }
 }

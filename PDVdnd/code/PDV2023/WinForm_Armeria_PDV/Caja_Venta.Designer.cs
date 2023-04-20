@@ -91,6 +91,7 @@
             dGridVentas.RowTemplate.Height = 25;
             dGridVentas.Size = new Size(564, 242);
             dGridVentas.TabIndex = 3;
+            dGridVentas.CellContentClick += dGridVentas_CellContentClick;
             // 
             // colId
             // 
@@ -254,6 +255,7 @@
             Name = "Caja_Venta";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Caja Venta";
+            Load += Caja_Venta_Load;
             ((System.ComponentModel.ISupportInitialize)numericCantidad).EndInit();
             ((System.ComponentModel.ISupportInitialize)dGridVentas).EndInit();
             ResumeLayout(false);

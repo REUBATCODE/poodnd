@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Back_CRUDs_BD;
 using Middle_Armeria_PDV;
 
 namespace WinForm_Armeria_PDV
@@ -9,12 +10,14 @@ namespace WinForm_Armeria_PDV
         //instancia de producto
         Producto prodAVender;
         Venta venta;
+        CRUDs_BD bd;
 
         public Caja_Venta()
         {
             InitializeComponent();
             prodAVender = new Producto();
             venta = new Venta();
+            bd = new Back_CRUDs_BD.MySql("localhost", "root", "", "dnd_armeria", "3306");
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -38,7 +41,7 @@ namespace WinForm_Armeria_PDV
                 int col = dGridVentas.ColumnCount - 1;
                 int subtotal = 0;
                 //totalizar la venta
-                for (int i = 1; i < dGridVentas.Rows.Count; i++)
+                for (int i = 1; i < dGridVentas.Rows.Count-1; i++)
                 {
                     subtotal += int.Parse(dGridVentas.Rows[i].Cells[col].Value.ToString());
                 }
@@ -51,16 +54,16 @@ namespace WinForm_Armeria_PDV
         {
             //preparamos las vars para registrar las ventas
             List<ProductoAVender> prodsAVender = new List<ProductoAVender>();
-            for(int i = 0; i< dGridVentas.Rows.Count-1; i++)
+            for (int i = 0; i < dGridVentas.Rows.Count - 1; i++)
             {
-                    //agregar un ProductoAVender a la lista
-                    ProductoAVender prodVender = new ProductoAVender(int.Parse(dGridVentas.Rows[i].Cells[0].Value.ToString()), int.Parse(dGridVentas.Rows[i].Cells[3].Value.ToString()));
-                    prodsAVender.Add(prodVender);
+                //agregar un ProductoAVender a la lista
+                ProductoAVender prodVender = new ProductoAVender(int.Parse(dGridVentas.Rows[i].Cells[0].Value.ToString()), int.Parse(dGridVentas.Rows[i].Cells[3].Value.ToString()));
+                prodsAVender.Add(prodVender);
             }
 
             int cambio = int.Parse(((venta.registrarVenta(1, int.Parse(txtTotal.Text), int.Parse(txtEfectivo.Text), prodsAVender))).ToString());
             //si hay error
-            if(cambio == -1)
+            if (cambio == -1)
             {
                 MessageBox.Show("Error al registrar la venta", Venta.msgError);
             }
@@ -68,6 +71,16 @@ namespace WinForm_Armeria_PDV
             {
                 MessageBox.Show("Registrada correctamente", "Su cambio es $" + cambio + "Vuelva pronto.");
             }
+        }
+
+        private void dGridVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Caja_Venta_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -55,7 +55,7 @@
             // 
             label_armeria.BackColor = Color.Transparent;
             label_armeria.BorderStyle = BorderStyle.Fixed3D;
-            label_armeria.Font = new Font("Anton", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label_armeria.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label_armeria.ForeColor = Color.White;
             label_armeria.Location = new Point(986, 9);
             label_armeria.Name = "label_armeria";
@@ -122,11 +122,11 @@
             // txt_id
             // 
             txt_id.BackColor = Color.MediumPurple;
-            txt_id.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_id.Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
             txt_id.ForeColor = SystemColors.InactiveBorder;
             txt_id.Location = new Point(986, 210);
             txt_id.Name = "txt_id";
-            txt_id.Size = new Size(389, 25);
+            txt_id.Size = new Size(389, 21);
             txt_id.TabIndex = 3;
             txt_id.Text = "ID DEL PRODUCTO";
             txt_id.TextAlign = HorizontalAlignment.Center;
@@ -134,11 +134,11 @@
             // txtnombre
             // 
             txtnombre.BackColor = Color.MediumPurple;
-            txtnombre.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+            txtnombre.Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
             txtnombre.ForeColor = SystemColors.InactiveBorder;
             txtnombre.Location = new Point(986, 241);
             txtnombre.Name = "txtnombre";
-            txtnombre.Size = new Size(389, 25);
+            txtnombre.Size = new Size(389, 21);
             txtnombre.TabIndex = 4;
             txtnombre.Text = "NOMBRE";
             txtnombre.TextAlign = HorizontalAlignment.Center;
@@ -146,11 +146,11 @@
             // txtprecio
             // 
             txtprecio.BackColor = Color.MediumPurple;
-            txtprecio.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+            txtprecio.Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
             txtprecio.ForeColor = SystemColors.InactiveBorder;
             txtprecio.Location = new Point(986, 272);
             txtprecio.Name = "txtprecio";
-            txtprecio.Size = new Size(389, 25);
+            txtprecio.Size = new Size(389, 21);
             txtprecio.TabIndex = 5;
             txtprecio.Text = "PRECIO";
             txtprecio.TextAlign = HorizontalAlignment.Center;
@@ -158,11 +158,11 @@
             // txtcodbarras
             // 
             txtcodbarras.BackColor = Color.MediumPurple;
-            txtcodbarras.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+            txtcodbarras.Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
             txtcodbarras.ForeColor = SystemColors.InactiveBorder;
             txtcodbarras.Location = new Point(986, 303);
             txtcodbarras.Name = "txtcodbarras";
-            txtcodbarras.Size = new Size(389, 25);
+            txtcodbarras.Size = new Size(389, 21);
             txtcodbarras.TabIndex = 6;
             txtcodbarras.Text = "CÓDIGO DE BARRAS";
             txtcodbarras.TextAlign = HorizontalAlignment.Center;
@@ -170,11 +170,11 @@
             // txtimagen
             // 
             txtimagen.BackColor = Color.MediumPurple;
-            txtimagen.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+            txtimagen.Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
             txtimagen.ForeColor = SystemColors.InactiveBorder;
             txtimagen.Location = new Point(986, 334);
             txtimagen.Name = "txtimagen";
-            txtimagen.Size = new Size(389, 25);
+            txtimagen.Size = new Size(389, 21);
             txtimagen.TabIndex = 7;
             txtimagen.Text = "IMAGEN";
             txtimagen.TextAlign = HorizontalAlignment.Center;
@@ -182,13 +182,13 @@
             // comboTipo
             // 
             comboTipo.BackColor = Color.MediumPurple;
-            comboTipo.Font = new Font("Kanit Black", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
+            comboTipo.Font = new Font("Microsoft Sans Serif", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
             comboTipo.ForeColor = SystemColors.InactiveBorder;
             comboTipo.FormattingEnabled = true;
             comboTipo.Items.AddRange(new object[] { "ESPADA", "HACHA", "LANZA", "ESCUDO", "ARMADURA" });
             comboTipo.Location = new Point(986, 365);
             comboTipo.Name = "comboTipo";
-            comboTipo.Size = new Size(389, 27);
+            comboTipo.Size = new Size(389, 23);
             comboTipo.TabIndex = 8;
             comboTipo.Text = "TIPO DE PRODUCTO";
             comboTipo.SelectedIndexChanged += comboTipo_SelectedIndexChanged;
@@ -197,7 +197,7 @@
             // 
             btnGuardar.BackColor = Color.FromArgb(192, 255, 192);
             btnGuardar.BackgroundImage = (Image)resources.GetObject("btnGuardar.BackgroundImage");
-            btnGuardar.Font = new Font("Anton", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGuardar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGuardar.ForeColor = Color.FromArgb(255, 255, 128);
             btnGuardar.Location = new Point(1035, 398);
             btnGuardar.Name = "btnGuardar";
@@ -214,12 +214,13 @@
             btnBorrar.Size = new Size(140, 60);
             btnBorrar.TabIndex = 13;
             btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnModificar
             // 
             btnModificar.BackColor = Color.FromArgb(192, 255, 192);
             btnModificar.BackgroundImage = (Image)resources.GetObject("btnModificar.BackgroundImage");
-            btnModificar.Font = new Font("Anton", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnModificar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnModificar.ForeColor = Color.FromArgb(255, 255, 128);
             btnModificar.Location = new Point(1193, 398);
             btnModificar.Name = "btnModificar";
@@ -234,7 +235,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(146, 149, 138);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1387, 637);
+            ClientSize = new Size(1370, 637);
             Controls.Add(btnModificar);
             Controls.Add(btnBorrar);
             Controls.Add(btnGuardar);
