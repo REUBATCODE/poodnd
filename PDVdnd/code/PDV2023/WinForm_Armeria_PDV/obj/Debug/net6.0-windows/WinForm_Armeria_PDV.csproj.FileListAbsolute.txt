@@ -80,3 +80,6 @@ C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj\De
 C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj\Debug\net6.0-windows\WinForm_Armeria_PDV.pdb
 C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj\Debug\net6.0-windows\WinForm_Armeria_PDV.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj\Debug\net6.0-windows\ref\WinForm_Armeria_PDV.dll
+C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj\Debug\net6.0-windows\WinForm_Armeria_PDV.Menu.resources
+C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj\Debug\net6.0-windows\WinForm_Armeria_PDV.CRUD_Usuarios.resources
+C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj\Debug\net6.0-windows\WinForm_Armeria_PDV.Login.resources

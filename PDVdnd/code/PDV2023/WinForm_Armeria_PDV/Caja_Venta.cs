@@ -32,7 +32,7 @@ namespace WinForm_Armeria_PDV
             else
             {
                 //si existe el producto, vamos a crear un renglon en el data grid
-                dGridVentas.Rows.Add(new object[] { res.id, res.nombre, numericCantidad.Value, res.precio * int.Parse(numericCantidad.Value.ToString()) });
+                dGridVentas.Rows.Add(new object[] { res.id, res.nombre, res.precio, numericCantidad.Value, res.precio * int.Parse(numericCantidad.Value.ToString()) });
                 //en la ultima columna, vamos a poner la multiplicacion de cantidad por precio del prod
                 //limpiamos txtCodBarras
                 txtCodBarras.Clear();
@@ -41,11 +41,14 @@ namespace WinForm_Armeria_PDV
                 int col = dGridVentas.ColumnCount - 1;
                 int subtotal = 0;
                 //totalizar la venta
-                for (int i = 1; i < dGridVentas.Rows.Count-1; i++)
+                for (int i = 0; i < dGridVentas.Rows.Count - 1; i++)
                 {
                     subtotal += int.Parse(dGridVentas.Rows[i].Cells[col].Value.ToString());
                 }
                 txtTotal.Text = subtotal.ToString();
+                txtSubtotal.Text = (subtotal - subtotal * 0.16).ToString();
+                txtIva.Text = (subtotal * 0.16).ToString();
+
             }
 
         }
@@ -79,6 +82,11 @@ namespace WinForm_Armeria_PDV
         }
 
         private void Caja_Venta_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
 
         }

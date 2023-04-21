@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <BaseIntermediateOutputPath>C:\Users\Usuario\Desktop\POO_2023\PDVdnd\code\PDV2023\WinForm_Armeria_PDV\obj</BaseIntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
