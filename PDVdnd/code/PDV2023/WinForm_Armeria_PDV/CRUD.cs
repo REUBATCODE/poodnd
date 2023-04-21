@@ -35,18 +35,24 @@ namespace WinForm_Armeria_PDV
             {
 
                 int celdas = e.RowIndex;
+                pictureBoxImagen.ImageLocation = "..\\..\\..\\..\\..\\..\\..\\prods\\" + txtimagen.Text;//recargar foto
+
                 txtnombre.Text = dgridEquipamiento.Rows[celdas].Cells[1].Value.ToString();
                 txtprecio.Text = dgridEquipamiento.Rows[celdas].Cells[2].Value.ToString();
                 txtcodbarras.Text = dgridEquipamiento.Rows[celdas].Cells[3].Value.ToString();
-                comboTipo.SelectedItem = dgridEquipamiento.Rows[celdas].Cells[5].Value.ToString();
-                txtimagen.Text = dgridEquipamiento.Rows[celdas].Cells[4].Value.ToString();
-                //pictureBoxImagen.ImageLocation = "..\\..\\..\\fotosProductos\\" + txtImagen.Text;//para recargar la foto. 
-                this.identificador = (int)dgridEquipamiento.Rows[celdas].Cells[0].Value;
+                comboTipo.SelectedItem = dgridEquipamiento.Rows[celdas].Cells[4].Value.ToString();
+                pictureBoxImagen.ImageLocation = dgridEquipamiento.Rows[celdas].Cells[5].Value.ToString();
+
+
+
+                pictureBoxImagen.ImageLocation = "..\\..\\..\\..\\..\\..\\..\\prods\\" + txtimagen.Text;
+                this.identificador = int.Parse(dgridEquipamiento.Rows[celdas].Cells[0].Value.ToString());
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             Tipo valorTipo;
             switch (comboTipo.SelectedItem.ToString())
             {
@@ -77,9 +83,13 @@ namespace WinForm_Armeria_PDV
             else
             {
                 MessageBox.Show("Producto registrado con éxito. ");
+                if (pictureBoxImagen.Image != null)
+                {
+                    pictureBoxImagen.Image.Save("..\\..\\..\\..\\..\\..\\..\\prods" + txtimagen.Text);
+                }
 
                 this.limpiarForm(true);
-                this.CRUD_Load(sender, e);//Con esto, cada producto borrado nos recargará el datagrid
+                this.CRUD_Load(sender, e);
             }
         }
 
@@ -120,6 +130,11 @@ namespace WinForm_Armeria_PDV
             else
             {
                 MessageBox.Show("PRODUCTO MODIFICADO CON ÉXITO");
+                if (pictureBoxImagen.Image != null)
+                {
+                    pictureBoxImagen.Image.Save("..\\..\\..\\..\\..\\..\\..\\prods\\" +txtimagen.Text);
+                }
+
             }
             this.limpiarForm(false);
             this.CRUD_Load(sender, e);
@@ -135,7 +150,18 @@ namespace WinForm_Armeria_PDV
             List<object[]> datos = prod.consultarTodos();
             for (int i = 0; i < datos.Count; i++)
             {
-                dgridEquipamiento.Rows.Add(datos[i]);
+                //MessageBox.Show(datos[i].ElementAt(0).ToString() + datos[i].ElementAt(4).ToString());
+                //dgridEquipamiento.Rows.Add(datos[i]);
+                try
+                {
+                    dgridEquipamiento.Rows.Add(datos[i].ElementAt(0).ToString(), datos[i].ElementAt(1).ToString(), datos[i].ElementAt(2).ToString(), datos[i].ElementAt(3).ToString(), datos[i].ElementAt(5).ToString(), Image.FromFile("C:\\Users\\Usuario\\Desktop\\POO_2023\\" + datos[i].ElementAt(4).ToString()));
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
         }
         public void limpiarForm(bool habilitar)
@@ -176,7 +202,7 @@ namespace WinForm_Armeria_PDV
             {
                 MessageBox.Show("PRODUCTO ELIMINADO CON ÉXITO");
                 this.limpiarForm(true);
-                this.CRUD_Load(sender, e);//Con esto, cada producto borrado nos recargará el datagrid
+                this.CRUD_Load(sender, e);//recargar dgrid
             }
 
         }
@@ -191,12 +217,17 @@ namespace WinForm_Armeria_PDV
                 //crear el nombre único. 
                 DateTime dtNombre = DateTime.Now;
                 string nombreImg = "prod_" + dtNombre.Ticks + ".png";
-                txtImagen.Text = nombreImg;
+                txtimagen.Text = nombreImg;
             }
             else
             {
-                //Mencionar el error en caso de existir. 
+
             }
+        }
+
+        private void pictureBoxImagen_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

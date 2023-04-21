@@ -49,8 +49,10 @@
             lblEfectivo = new Label();
             btnPagar = new Button();
             btnCancelar = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)numericCantidad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGridVentas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtCodBarras
@@ -214,7 +216,7 @@
             // 
             btnPagar.BackColor = SystemColors.Control;
             btnPagar.BackgroundImage = (Image)resources.GetObject("btnPagar.BackgroundImage");
-            btnPagar.Location = new Point(232, 359);
+            btnPagar.Location = new Point(285, 517);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(55, 55);
             btnPagar.TabIndex = 13;
@@ -225,19 +227,31 @@
             // 
             btnCancelar.BackColor = SystemColors.Control;
             btnCancelar.BackgroundImage = (Image)resources.GetObject("btnCancelar.BackgroundImage");
-            btnCancelar.Location = new Point(232, 483);
+            btnCancelar.Location = new Point(519, 517);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(55, 55);
             btnCancelar.TabIndex = 14;
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(18, 427);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(261, 145);
+            pictureBox1.TabIndex = 18;
+            pictureBox1.TabStop = false;
+            // 
             // Caja_Venta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(586, 584);
+            Controls.Add(pictureBox1);
             Controls.Add(btnCancelar);
             Controls.Add(btnPagar);
             Controls.Add(lblEfectivo);
@@ -259,6 +273,7 @@
             Load += Caja_Venta_Load;
             ((System.ComponentModel.ISupportInitialize)numericCantidad).EndInit();
             ((System.ComponentModel.ISupportInitialize)dGridVentas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -285,5 +300,6 @@
         private DataGridViewTextBoxColumn colPrecio;
         private DataGridViewTextBoxColumn colCantidad;
         private DataGridViewTextBoxColumn colSubtotal;
+        private PictureBox pictureBox1;
     }
 }
