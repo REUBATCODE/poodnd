@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Middle_Armeria_PDV;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace WinForm_Armeria_PDV
 {
     public partial class Menu : Form
     {
+        public static Usuario nuevasesion;
+
         public Menu()
         {
             InitializeComponent();

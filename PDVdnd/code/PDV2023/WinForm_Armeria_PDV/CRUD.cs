@@ -15,9 +15,10 @@ namespace WinForm_Armeria_PDV
     public partial class CRUD : Form
 
     {
-        Producto prod = new Producto(); //un tipo de producto vacio. 
-        CRUDs_BD bd;//para utilizar la conexión a la bd
+        Producto prod = new Producto(); 
+        CRUDs_BD bd;//para utilizar la conexión
         int identificador = 0;
+
 
         public CRUD()
         {
@@ -33,20 +34,18 @@ namespace WinForm_Armeria_PDV
         {
             if (e.RowIndex >= 0)
             {
-
                 int celdas = e.RowIndex;
-                pictureBoxImagen.ImageLocation = "..\\..\\..\\..\\..\\..\\..\\prods\\" + txtimagen.Text;//recargar foto
-
                 txtnombre.Text = dgridEquipamiento.Rows[celdas].Cells[1].Value.ToString();
-                txtprecio.Text = dgridEquipamiento.Rows[celdas].Cells[2].Value.ToString();
                 txtcodbarras.Text = dgridEquipamiento.Rows[celdas].Cells[3].Value.ToString();
+                txtprecio.Text = dgridEquipamiento.Rows[celdas].Cells[2].Value.ToString();
+                txtimagen.Text = dgridEquipamiento.Rows[celdas].Cells[5].Value.ToString();
                 comboTipo.SelectedItem = dgridEquipamiento.Rows[celdas].Cells[4].Value.ToString();
-                pictureBoxImagen.ImageLocation = dgridEquipamiento.Rows[celdas].Cells[5].Value.ToString();
-
-
-
-                pictureBoxImagen.ImageLocation = "..\\..\\..\\..\\..\\..\\..\\prods\\" + txtimagen.Text;
+                pictureBoxImagen.ImageLocation = "..\\..\\..\\POO_2023\\" + txtimagen.Text;
+                txt_id.Text = dgridEquipamiento.Rows[celdas].Cells[0].Value.ToString();
+                txtimagen.Text = dgridEquipamiento.Rows[celdas].Cells[6].Value.ToString();
                 this.identificador = int.Parse(dgridEquipamiento.Rows[celdas].Cells[0].Value.ToString());
+
+
             }
         }
 
@@ -85,7 +84,7 @@ namespace WinForm_Armeria_PDV
                 MessageBox.Show("Producto registrado con éxito. ");
                 if (pictureBoxImagen.Image != null)
                 {
-                    pictureBoxImagen.Image.Save("..\\..\\..\\..\\..\\..\\..\\prods" + txtimagen.Text);
+                    pictureBoxImagen.Image.Save("C:\\Users\\Usuario\\Desktop\\POO_2023\\" + txtimagen.Text);
                 }
 
                 this.limpiarForm(true);
@@ -125,18 +124,18 @@ namespace WinForm_Armeria_PDV
             bool resultado = prod.modificar(txtnombre.Text, int.Parse(txtprecio.Text), txtcodbarras.Text, txtimagen.Text, valorTipo, this.identificador);
             if (resultado == false)
             {
-                MessageBox.Show("ERROR AL MODIFICAR PRODUCTO" + Producto.msgError);
+                MessageBox.Show("Error al modificar el producto. " + Producto.msgError);
             }
             else
             {
-                MessageBox.Show("PRODUCTO MODIFICADO CON ÉXITO");
+                MessageBox.Show("Producto modificado. ");
                 if (pictureBoxImagen.Image != null)
                 {
-                    pictureBoxImagen.Image.Save("..\\..\\..\\..\\..\\..\\..\\prods\\" +txtimagen.Text);
+                    pictureBoxImagen.Image.Save("C:\\Users\\Usuario\\Desktop\\POO_2023\\" + txtimagen.Text);
                 }
 
             }
-            this.limpiarForm(false);
+            this.limpiarForm(true);
             this.CRUD_Load(sender, e);
         }
         private void CRUD_Load(object sender, EventArgs e)
@@ -154,7 +153,15 @@ namespace WinForm_Armeria_PDV
                 //dgridEquipamiento.Rows.Add(datos[i]);
                 try
                 {
-                    dgridEquipamiento.Rows.Add(datos[i].ElementAt(0).ToString(), datos[i].ElementAt(1).ToString(), datos[i].ElementAt(2).ToString(), datos[i].ElementAt(3).ToString(), datos[i].ElementAt(5).ToString(), Image.FromFile("C:\\Users\\Usuario\\Desktop\\POO_2023\\" + datos[i].ElementAt(4).ToString()));
+                    dgridEquipamiento.Rows.Add(
+                        datos[i].ElementAt(0).ToString(),
+                        datos[i].ElementAt(1).ToString(),
+                        datos[i].ElementAt(2).ToString(),
+                        datos[i].ElementAt(3).ToString(),
+                        datos[i].ElementAt(5).ToString(),
+                        Image.FromFile("C:\\Users\\Usuario\\Desktop\\POO_2023\\" + datos[i].ElementAt(4).ToString()),
+                        datos[i].ElementAt(4).ToString()
+                   );
 
                 }
                 catch (Exception)
@@ -176,8 +183,7 @@ namespace WinForm_Armeria_PDV
                 txtprecio.Clear();
                 txtimagen.Enabled = true;
                 txtimagen.Clear();
-                //buttonExaminar.Enabled = true;
-                //buttonGuardar.Enabled = true;
+
 
             }
             else
@@ -190,8 +196,7 @@ namespace WinForm_Armeria_PDV
                 txtprecio.Clear();
                 txtimagen.Enabled = false;
                 txtimagen.Clear();
-                //buttonExaminar.Enabled = false;
-                //buttonGuardar.Enabled = false;
+
             }
         }
 
@@ -200,10 +205,20 @@ namespace WinForm_Armeria_PDV
             bool resultado = prod.borrar(identificador);
             if (resultado == false)
             {
-                MessageBox.Show("PRODUCTO ELIMINADO CON ÉXITO");
+                MessageBox.Show("Producto eliminado.");
+                if (pictureBox1.Image != null)
+                {
+                    File.Delete("C:\\Users\\Usuario\\Desktop\\POO_2023\\" + txtimagen.Text);
+                }
                 this.limpiarForm(true);
-                this.CRUD_Load(sender, e);//recargar dgrid
+                this.CRUD_Load(sender, e);
+
             }
+            else
+            {
+                MessageBox.Show("Error al intentar eliminar. " + Producto.msgError);
+            }
+            this.limpiarForm(true);
 
         }
 

@@ -49,6 +49,7 @@
             colCodBarras = new DataGridViewTextBoxColumn();
             colTipo = new DataGridViewTextBoxColumn();
             colImagen = new DataGridViewImageColumn();
+            colimagennombre = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgridEquipamiento).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -59,10 +60,9 @@
             dgridEquipamiento.AllowUserToAddRows = false;
             dgridEquipamiento.AllowUserToDeleteRows = false;
             dgridEquipamiento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgridEquipamiento.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colPrecio, colCodBarras, colTipo, colImagen });
+            dgridEquipamiento.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colPrecio, colCodBarras, colTipo, colImagen, colimagennombre });
             dgridEquipamiento.Location = new Point(12, 9);
             dgridEquipamiento.Name = "dgridEquipamiento";
-            dgridEquipamiento.ReadOnly = true;
             dgridEquipamiento.RowTemplate.Height = 25;
             dgridEquipamiento.Size = new Size(641, 616);
             dgridEquipamiento.TabIndex = 2;
@@ -76,6 +76,7 @@
             txt_id.ForeColor = SystemColors.InactiveBorder;
             txt_id.Location = new Point(659, 145);
             txt_id.Name = "txt_id";
+            txt_id.ReadOnly = true;
             txt_id.Size = new Size(389, 22);
             txt_id.TabIndex = 3;
             txt_id.Text = "ID DEL PRODUCTO";
@@ -221,45 +222,57 @@
             // 
             // colId
             // 
-            colId.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            colId.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             colId.HeaderText = "ID";
             colId.Name = "colId";
             colId.ReadOnly = true;
-            colId.Width = 43;
+            colId.Width = 20;
             // 
             // colNombre
             // 
             colNombre.HeaderText = "NOMBRE";
             colNombre.Name = "colNombre";
             colNombre.ReadOnly = true;
+            colNombre.Width = 240;
             // 
             // colPrecio
             // 
             colPrecio.HeaderText = "PRECIO";
             colPrecio.Name = "colPrecio";
             colPrecio.ReadOnly = true;
+            colPrecio.Width = 50;
             // 
             // colCodBarras
             // 
             colCodBarras.HeaderText = "CÓDIGO DE BARRAS";
             colCodBarras.Name = "colCodBarras";
             colCodBarras.ReadOnly = true;
+            colCodBarras.Width = 75;
             // 
             // colTipo
             // 
             colTipo.HeaderText = "TIPO";
             colTipo.Name = "colTipo";
             colTipo.ReadOnly = true;
+            colTipo.Width = 50;
             // 
             // colImagen
             // 
-            colImagen.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colImagen.FillWeight = 150F;
             colImagen.HeaderText = "IMAGEN";
             colImagen.ImageLayout = DataGridViewImageCellLayout.Zoom;
             colImagen.Name = "colImagen";
             colImagen.ReadOnly = true;
             colImagen.Resizable = DataGridViewTriState.False;
             colImagen.SortMode = DataGridViewColumnSortMode.Automatic;
+            colImagen.Width = 75;
+            // 
+            // colimagennombre
+            // 
+            colimagennombre.HeaderText = "NOMBRE DE LA IMAGEN";
+            colimagennombre.Name = "colimagennombre";
+            colimagennombre.ReadOnly = true;
+            colimagennombre.Width = 90;
             // 
             // CRUD
             // 
@@ -314,5 +327,6 @@
         private DataGridViewTextBoxColumn colCodBarras;
         private DataGridViewTextBoxColumn colTipo;
         private DataGridViewImageColumn colImagen;
+        private DataGridViewTextBoxColumn colimagennombre;
     }
 }

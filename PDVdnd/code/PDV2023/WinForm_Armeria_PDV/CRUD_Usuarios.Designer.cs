@@ -57,6 +57,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(442, 426);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // colId
             // 
@@ -160,6 +161,7 @@
             btnGuardarUser.Size = new Size(125, 125);
             btnGuardarUser.TabIndex = 10;
             btnGuardarUser.UseVisualStyleBackColor = true;
+            btnGuardarUser.Click += btnGuardarUser_Click;
             // 
             // btnModificarUser
             // 

@@ -9,7 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Middle_Armeria_PDV
 {
-    internal class Usuario
+    public class Usuario
     {
         int id;
         string nombre;
@@ -66,7 +66,7 @@ namespace Middle_Armeria_PDV
                 Usuario.msgError = this.bd.msgError;
             return res;
         }
-        public Usuario login(string email, string password)
+        public Usuario login(string nombre, string password)
         {
             Usuario prodResultado = new Usuario();
 
@@ -88,7 +88,7 @@ namespace Middle_Armeria_PDV
 
                 prodResultado.id = int.Parse(tempo[0].ToString());
                 prodResultado.nombre = tempo[1].ToString();
-                prodResultado.password = tempo[4].ToString();
+                prodResultado.password = tempo[2].ToString();
                 prodResultado.rol = roles;
             }
             else
